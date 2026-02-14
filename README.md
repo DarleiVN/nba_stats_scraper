@@ -1,4 +1,9 @@
+
 # 🏀 NBA Stats Scraper & Analysis
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![Contributions](https://img.shields.io/badge/contributions-São_Bem_vindas-brightgreen.svg)]()
 
 Projeto em **Python** para coletar estatísticas da NBA diretamente do site oficial, salvar em **JSON**, carregar em **pandas DataFrame** e gerar gráficos dos líderes em diferentes estatísticas.
 

@@ -1,0 +1,18 @@
+# Arquivos de ambiente virtual
+.venv/
+venv/
+ENV/
+
+# Arquivos temporários
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configurações locais
+.DS_Store
+.vscode/
+.idea/
+
+# Dados gerados
+nba_stats.json

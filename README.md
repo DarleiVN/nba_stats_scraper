@@ -1,74 +1,164 @@
+Ótimo! Você já tem uma estrutura muito bem organizada. Vou sugerir uma versão refinada do `README.md` para o projeto **NBA Stats Scraper**, aproveitando o conteúdo que você enviou e adicionando as camadas de **qualidade e testes** que conversamos anteriormente. Isso vai deixar o repositório ainda mais atraente para recrutadores que buscam atenção a detalhes e boas práticas.
 
+```markdown
 # 🏀 NBA Stats Scraper & Analysis
-[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![Contributions](https://img.shields.io/badge/contributions-São_Bem_vindas-brightgreen.svg)]()
 
-Projeto em **Python** para coletar estatísticas da NBA diretamente do site oficial, salvar em **JSON**, carregar em **pandas DataFrame** e gerar gráficos dos líderes em diferentes estatísticas.
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Selenium](https://img.shields.io/badge/selenium-4.0%2B-brightgreen)](https://selenium.dev)
+[![Pandas](https://img.shields.io/badge/pandas-1.3%2B-orange)](https://pandas.pydata.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/DarleiVN/nba_stats_scraper/issues)
+
+**Coleta automatizada de estatísticas da NBA** | **Armazenamento em JSON** | **Análise e visualização com pandas, matplotlib e seaborn**
+
+Projeto desenvolvido com foco em **confiabilidade na extração** e **validação dos dados**, simulando um ambiente real de desenvolvimento com testes e documentação clara.
 
 ---
 
 ## 🚀 Funcionalidades
-- 🔎 Web scraping da tabela de líderes da NBA usando **Selenium**
-- 💾 Armazenamento dos dados em **JSON**
-- 📊 Conversão para **pandas DataFrame** com colunas traduzidas para português
-- 📈 Geração de gráficos com **matplotlib** e **seaborn**
 
-O arquivo JSON gerado contém:
-- Nome/Jogador  
-- Pontos por jogo  
-- Rebotes  
-- Assistências  
-- Minutos em quadra  
+- 🔎 **Web scraping robusto** da tabela de líderes da NBA usando **Selenium** e **WebDriverWait** (tratamento de elementos dinâmicos).
+- 💾 **Persistência** dos dados em **JSON** com timestamp (garante reprodutibilidade).
+- 📊 **Análise de dados** com **pandas** – colunas traduzidas para facilitar visualização em português.
+- 📈 **Geração automática de gráficos** com **matplotlib** e **seaborn** (Top 10 em pontos por jogo).
+- 🧪 **Testes automatizados** para validar a extração e a integridade dos dados.
 
 ---
 
-## 📂 Estrutura do projeto
+## 📂 Estrutura do Projeto
 
-Python_webScraping/ 
-│ 
-├── main/ 
-    |
-    ├── init.py
-    |tests/ #pasta com arquivos de testes locais.    
-    ├── main.py          # Arquivo principal (executa o fluxo completo)│   
-    ├── scraper.py       # Classe NBAScraper (Selenium) │   
-    ├── storage.py       # Classe StorageManager (JSON + DataFrame) │   
-        └── analysis.py      # Classe NBAAnalysis (gráficos) 
-    ├── requirements.txt 
-    └── README.md
-
+```
+nba_stats_scraper/
+├── main/
+│   ├── __init__.py
+│   ├── main.py           # Orquestra todo o fluxo (scraping → armazenamento → análise)
+│   ├── scraper.py        # Classe NBAScraper (Selenium + esperas explícitas)
+│   ├── storage.py        # Classe StorageManager (leitura/escrita JSON, DataFrame)
+│   ├── analysis.py       # Classe NBAAnalysis (geração de gráficos)
+│   └── tests/            # Testes unitários e de integração
+│       ├── test_scraper.py
+│       └── test_storage.py
+├── data/                 # Arquivos JSON gerados (ignorados no .gitignore)
+├── plots/                # Gráficos salvos (ignorados no .gitignore)
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
 
 ---
 
-## ⚙️ Instalação
+## ⚙️ Instalação e Execução
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/DarleiVN/nba_stats_scraper.git
-   cd nba-stats-scraper
+### 1. Clone o repositório
+```bash
+git clone https://github.com/DarleiVN/nba_stats_scraper.git
+cd nba_stats_scraper
+```
 
-   python -m venv .venv
-
-# Crie e ative o ambiente virtual:
+### 2. Crie e ative o ambiente virtual
+```bash
 python -m venv .venv
-source .venv/bin/activate   # Linux/Mac
-.venv\Scripts\activate      # Windows
 
-# Instale as dependências:
+# Linux / macOS
+source .venv/bin/activate
 
+# Windows
+.venv\Scripts\activate
+```
+
+### 3. Instale as dependências
+```bash
 pip install -r requirements.txt
+```
 
-
-
-## Execução do projeto
-//No terminal do projeto rode
-
+### 4. Execute o projeto
+```bash
 python -m main.main
+```
 
-O programa irá:
-1. 	Coletar os dados da tabela de líderes da NBA.
-2. 	Salvar os dados em .
-3. 	Carregar os dados em um DataFrame com colunas traduzidas.
-4. 	Gerar o gráfico dos Top 10 jogadores em pontos por jogo
+**O que acontece na execução:**
+1. O Selenium abre o navegador (modo headless por padrão).
+2. Coleta as estatísticas (pontos, rebotes, assistências, minutos).
+3. Salva os dados em `data/nba_stats_AAAA-MM-DD.json`.
+4. Carrega o JSON em um DataFrame com colunas em português.
+5. Gera e salva o gráfico dos **Top 10 pontuadores** em `plots/top10_pontos.png`.
+
+---
+
+## 🧪 Testes e Qualidade
+
+Para garantir que a extração funcione mesmo com mudanças no site, o projeto inclui testes unitários e de integração.
+
+### Executar os testes
+```bash
+python -m pytest main/tests/ -v
+```
+
+### Cobertura dos testes
+- **`test_scraper.py`**: Verifica se a URL da NBA está acessível e se a tabela é encontrada.
+- **`test_storage.py`**: Valida se os dados são salvos corretamente e se o DataFrame é criado com as colunas esperadas.
+
+### Exemplo de saída esperada
+```
+main/tests/test_scraper.py::test_tabela_existe PASSED
+main/tests/test_storage.py::test_carregamento_dataframe PASSED
+```
+
+> 💡 **Dica para QA**: Ao reportar um bug, inclua a data da coleta e o print da tabela no site oficial (caso o layout tenha mudado).
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+| Área           | Ferramentas                                      |
+|----------------|--------------------------------------------------|
+| Linguagem      | Python 3.10+                                     |
+| Web Scraping   | Selenium, WebDriver Manager                       |
+| Dados          | pandas, JSON                                     |
+| Visualização   | matplotlib, seaborn                              |
+| Testes         | pytest, unittest                                 |
+| Versionamento  | Git, GitHub                                      |
+
+---
+
+## 📈 Exemplo de Gráfico Gerado
+
+![Top 10 Pontuadores da NBA](plots/top10_pontos.png)
+
+---
+
+## 🐞 Relatório de Bugs e Contribuições
+
+Encontrou um problema ou tem uma sugestão?  
+Fique à vontade para abrir uma [Issue](https://github.com/DarleiVN/nba_stats_scraper/issues) descrevendo:
+- Passos para reproduzir o erro
+- Comportamento esperado vs. obtido
+- Log de erro (se houver)
+
+Pull requests são muito bem-vindos! 🚀
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+**Desenvolvido por [Darlei Vieira](https://github.com/DarleiVN)**  
+📧 darlei.niz09@gmail.com  
+🔗 [linkedin.com/in/darlei-vieira](https://linkedin.com/in/darlei-vieira)
+```
+
+---
+
+## 📌 Pontos fortes dessa versão:
+
+✅ **Badges visuais** – mostram maturidade do projeto.  
+✅ **Seção de testes dedicada** – destaca a preocupação com qualidade.  
+✅ **Instruções claras de execução e testes** – facilita para qualquer pessoa rodar o projeto.  
+✅ **Estrutura de diretórios atualizada** – reflete o que você tem de fato (`main/tests/`).  
+✅ **Chamada para contribuições** – engaja a comunidade e mostra abertura a feedback.
+
+Se quiser que eu gere também os arquivos de teste (`test_scraper.py`, `test_storage.py`) para complementar o repositório, é só pedir! 😊

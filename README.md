@@ -1,6 +1,6 @@
-Ótimo! Você já tem uma estrutura muito bem organizada. Vou sugerir uma versão refinada do `README.md` para o projeto **NBA Stats Scraper**, aproveitando o conteúdo que você enviou e adicionando as camadas de **qualidade e testes** que conversamos anteriormente. Isso vai deixar o repositório ainda mais atraente para recrutadores que buscam atenção a detalhes e boas práticas.
 
-```markdown
+
+
 # 🏀 NBA Stats Scraper & Analysis
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -99,15 +99,6 @@ python -m pytest main/tests/ -v
 - **`test_scraper.py`**: Verifica se a URL da NBA está acessível e se a tabela é encontrada.
 - **`test_storage.py`**: Valida se os dados são salvos corretamente e se o DataFrame é criado com as colunas esperadas.
 
-### Exemplo de saída esperada
-```
-main/tests/test_scraper.py::test_tabela_existe PASSED
-main/tests/test_storage.py::test_carregamento_dataframe PASSED
-```
-
-> 💡 **Dica para QA**: Ao reportar um bug, inclua a data da coleta e o print da tabela no site oficial (caso o layout tenha mudado).
-
----
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -149,16 +140,3 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 **Desenvolvido por [Darlei Vieira](https://github.com/DarleiVN)**  
 📧 darlei.niz09@gmail.com  
 🔗 [linkedin.com/in/darlei-vieira](https://linkedin.com/in/darlei-vieira)
-```
-
----
-
-## 📌 Pontos fortes dessa versão:
-
-✅ **Badges visuais** – mostram maturidade do projeto.  
-✅ **Seção de testes dedicada** – destaca a preocupação com qualidade.  
-✅ **Instruções claras de execução e testes** – facilita para qualquer pessoa rodar o projeto.  
-✅ **Estrutura de diretórios atualizada** – reflete o que você tem de fato (`main/tests/`).  
-✅ **Chamada para contribuições** – engaja a comunidade e mostra abertura a feedback.
-
-Se quiser que eu gere também os arquivos de teste (`test_scraper.py`, `test_storage.py`) para complementar o repositório, é só pedir! 😊
